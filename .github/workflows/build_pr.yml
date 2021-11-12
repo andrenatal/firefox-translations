@@ -13,10 +13,6 @@ jobs:
         run: npm install
       - name: Run linter
         run: npm run lint:js
-      - name: Build XPI
-        run: |
-         cd extension
-         zip -r ../firefox_translations.zip *
       - uses: actions/upload-artifact@v2
         with:
           name: firefox_translations

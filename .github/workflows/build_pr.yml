@@ -15,7 +15,10 @@ jobs:
         run: npm run lint:js
       - name: Build XPI
         run: npm run build
+      - name: Version
+        run: webext -version
       - uses: actions/upload-artifact@v2
         with:
-          name: firefox_translations
-          path: web-ext-artifacts/firefox_translations-0.5.zip
+          name: Extension-XPI
+          path: web-ext-artifacts/firefox_translations-*.zip
+

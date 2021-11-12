@@ -17,5 +17,5 @@ jobs:
         run: npm run build
       - uses: actions/upload-artifact@v2
         with:
-          name: Extension-XPI
+          name: firefox_translations
           path: web-ext-artifacts/firefox_translations-0.5.zip

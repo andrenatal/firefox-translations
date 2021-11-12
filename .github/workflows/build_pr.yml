@@ -14,11 +14,13 @@ jobs:
       - name: Run linter
         run: npm run lint:js
       - name: Build XPI
-        run: npm run build
+        run: |
+         cd extension
+         zip -r ../web-ext-artifacts/firefox_translations.zip
       - name: Version
         run: npm run webext:version
       - uses: actions/upload-artifact@v2
         with:
           name: Extension-XPI
-          path: web-ext-artifacts/firefox_translations-*.zip
+          path: web-ext-artifacts/firefox_translations.zip
 

@@ -19,6 +19,6 @@ jobs:
          zip -r ../firefox_translations.zip *
       - uses: actions/upload-artifact@v2
         with:
-          name: Extension-XPI
+          name: firefox_translations
           path: firefox_translations.zip
 

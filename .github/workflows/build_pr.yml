@@ -16,7 +16,7 @@ jobs:
       - name: Build XPI
         run: |
          cd extension
-         zip -r ../web-ext-artifacts/firefox_translations.zip
+         zip -r ../web-ext-artifacts/firefox_translations.zip *
       - name: Version
         run: npm run webext:version
       - uses: actions/upload-artifact@v2

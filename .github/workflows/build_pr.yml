@@ -19,5 +19,5 @@ jobs:
          zip -r ../firefox_translations.zip *
       - uses: actions/upload-artifact@v2
         with:
-          name: extension_folder
+          name: firefox_translations
           path: extension/

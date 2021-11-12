@@ -18,5 +18,4 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: Extension-XPI
-          path: web-ext-artifacts/firefox_translations-*.zip
-
+          path: web-ext-artifacts/firefox_translations-0.5.zip

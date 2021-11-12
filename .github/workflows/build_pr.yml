@@ -16,7 +16,7 @@ jobs:
       - name: Build XPI
         run: npm run build
       - name: Version
-        run: webext -version
+        run: npm run webext:version
       - uses: actions/upload-artifact@v2
         with:
           name: Extension-XPI

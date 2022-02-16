@@ -11,7 +11,5 @@ jobs:
           node-version: '17.x'
       - run: npm install
       - run: brew install git-cinnabar
-      - run: git clone https://github.com/glandium/git-cinnabar git-cinnabar
-      - run: export PATH=$PATH:$(pwd)/git-cinnabar; echo $PATH; ls $(pwd)/git-cinnabar
       - name: Run test
         run: python3 scripts/tests/e2e-tests.py

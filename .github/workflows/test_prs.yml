@@ -9,6 +9,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: '17.x'
+      - run: npm install
       - run: git clone https://github.com/glandium/git-cinnabar git-cinnabar
       - run: export PATH=$PATH:$(pwd)/gecko
       - name: Run test

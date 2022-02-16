@@ -1,5 +1,5 @@
 name: End-to-End test of Pull Requests
-on: [pull_request]
+on: workflow_dispatch
 jobs:
   build:
     runs-on: macos-latest

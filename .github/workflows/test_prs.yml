@@ -2,7 +2,8 @@ name: End-to-End test of Pull Requests
 on:
   push:
     branches: [ main ]
-  [pull_request]:
+  schedule:
+    - cron: '59 0 * * *'
 jobs:
   build:
     runs-on: macos-latest

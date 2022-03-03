@@ -19,9 +19,15 @@ jobs:
         run: npm run lint:js
       - name: Build
         run: npm run build
-      - name: Delete release
-        run: curl -X DELETE https://api.github.com/repos/andrenatal/firefox-translations/releases/Nightly
-      - name: Create Release
+      - name: Retrieve old Nightly id
+        run: |- 
+          TAG_ID=`curl -s -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/andrenatal/firefox-translations/releases/tags/nightly | python3 -c "import sys, json; print(json.load(sys.stdin)['id'])"`
+      - name: Delete old Nightly
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |-
+          `curl -X DELETE -H "Authorization: token $GITHUB_TOKEN" -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/andrenatal/firefox-translations/releases/$TAG_ID`          
+      - name: Create Nightly Release
         id: create_release
         uses: actions/create-release@v1
         env:

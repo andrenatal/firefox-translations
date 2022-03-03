@@ -14,6 +14,7 @@ class Translation {
         this.translateSchedule = null; // holds a reference to the translation setTimeout
         this.translationMessageBuffer = new Queue();
         this.mediator = mediator;
+        this.htmlRegex = new RegExp("<(.*)>.*?|<(.*) />", "gi");
         const engineLocalPath = browser.runtime.getURL("controller/translation/bergamot-translator-worker.js");
         const engineRemoteRegistry = browser.runtime.getURL("model/engineRegistry.js");
         const modelRegistry = browser.runtime.getURL("model/modelRegistry.js");
@@ -83,7 +84,11 @@ class Translation {
     translate(translationMessage) {
 
         if (translationMessage.type === "outbound") {
-            // if the message is from outbound translations, we skip the line.
+
+            /*
+             * if the message is from outbound translations, we skip queuing it and
+             * send for translation immediately
+             */
             if (this.translationWorker) {
                 this.translationWorker.postMessage([
                     "translate",
@@ -145,6 +150,8 @@ class Translation {
         this.translationsMessagesCounter += 1;
         translationMessage.messageID = this.translationsMessagesCounter;
         translationMessage.sourceParagraph = sourceParagraph;
+        // let's revisit this later, since passing false here when there's plain text is breaking
+        translationMessage.isHTML = true; // this.htmlRegex.test(sourceParagraph);
         switch (type) {
             case "outbound":
                 translationMessage.sourceLanguage = navigatorLanguage;

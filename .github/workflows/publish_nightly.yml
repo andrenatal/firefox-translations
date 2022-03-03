@@ -28,7 +28,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |-
           echo $TAG_ID
-          curl -X DELETE -H "Authorization: token $GITHUB_TOKEN" -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/andrenatal/firefox-translations/releases/$TAG_ID         
         continue-on-error: true
       - name: Create Nightly Release
         id: create_release

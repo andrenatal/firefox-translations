@@ -20,7 +20,7 @@ jobs:
       - name: Build
         run: npm run build
       - name: Delete release
-        run: curl -X DELETE https://api.github.com/repos/andrenatal/firefox-translations/releases/nightly
+        run: curl -X DELETE https://api.github.com/repos/andrenatal/firefox-translations/releases/Nightly
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1

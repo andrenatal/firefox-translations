@@ -18,7 +18,9 @@ jobs:
       - name: Run linter
         run: npm run lint:js
       - name: Build
-        run: npm run build        
+        run: npm run build
+      - name: Delete release
+        run: curl -X DELETE -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/mozilla/firefox-translations/releases/nightly
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1

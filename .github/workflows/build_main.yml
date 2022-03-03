@@ -2,8 +2,6 @@ name: Build Main
 on:
   push:
     branches: [ xpi ]
-  schedule:
-    - cron: '0 2 * * *' # Daily at 2AM UTC
 jobs:
   build:
     runs-on: ubuntu-latest

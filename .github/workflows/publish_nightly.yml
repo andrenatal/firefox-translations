@@ -20,7 +20,7 @@ jobs:
       - name: Build
         run: npm run build
       - name: Retrieve old Nightly id
-        run: |- 
+        run: |
           TAG_ID=`curl -s -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/andrenatal/firefox-translations/releases/tags/nightly | python3 -c "import sys, json; print(json.load(sys.stdin)['id'])"`
           echo $TAG_ID
           echo `TAG_ID=$TAG_ID` >> $GITHUB_ENV
@@ -28,7 +28,7 @@ jobs:
       - name: Delete old Nightly
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |-
+        run: |
           echo "${{ env.TAG_ID }}"
         continue-on-error: true
       - name: Create Nightly Release

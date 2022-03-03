@@ -2,8 +2,6 @@ name: Build Main
 on:
   push:
     branches: [ main ]
-  schedule:
-    - cron: '0 2 * * *' # Daily at 2AM UTC
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -23,5 +21,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: firefox_translations
-          if-no-files-found: error
-          path: extension/
+          path: web-ext-artifacts/firefox_translations.xpi

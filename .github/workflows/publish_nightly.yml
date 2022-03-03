@@ -3,7 +3,7 @@ on:
   push:
     branches: [ main ]
   schedule:
-    - cron: '0 2 * * *' # Daily at 2AM UTC
+    - cron: '0 0 * * *' # Daily at 12AM UTC
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -29,6 +29,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          `curl -X DELETE -H "Authorization: token ${{ env.GITHUB_TOKEN }}" -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/andrenatal/firefox-translations/git/refs/tags/nightly`
           `curl -X DELETE -H "Authorization: token ${{ env.GITHUB_TOKEN }}" -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/andrenatal/firefox-translations/releases/${{ env.TAG_ID }}`
         continue-on-error: true
       - name: Create Nightly Release

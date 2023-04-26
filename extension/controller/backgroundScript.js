@@ -335,6 +335,7 @@ const messageListener = function(message, sender) {
               wps
             }
           );
+          console.log("WPS:", wps);
         }
           break;
 

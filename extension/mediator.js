@@ -346,7 +346,7 @@ class Mediator {
                 document.querySelector("html").setAttribute("x-bergamot-debug", true);
                 break;
             case "updateStats":
-                if (this.statsMode) {
+                if (true) {
                     // if the user chose to see stats in the infobar, we display them
                     browser.runtime.sendMessage({
                         command: "updateProgress",
